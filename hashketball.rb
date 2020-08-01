@@ -127,15 +127,14 @@ def game_hash
 end
 
 # Write code here
-def num_points_scored(player)
-new_hash = game_hash
-response = nil
-  new_hash.each do |hora, team|
-    if player == team[:player_name]
-      response = team[:points]
+def num_points_scored(player_search)
+  game_hash.each do |team, team_info|
+    team_info[:players].each do |player|
+      if player[:player_name] == player_search
+        return player[:points]
+      end
     end
   end
-   return response
 end
 
 def shoe_size(name)
